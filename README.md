@@ -3,6 +3,8 @@
 A flexible Elixir library for generating human-readable, memorable identifiers.
 Uses combinations of adjectives, nouns, verbs, adverbs, and prepositions with optional numeric/custom suffixes.
 
+TypeScript version of this library: [memorable-ids](https://www.npmjs.com/package/memorable-ids)
+
 ## Features
 
 - 🎯 **Human-readable** - Generate IDs like `cute-rabbit`, `quick-owl-dance-quietly`, etc
@@ -355,6 +357,13 @@ mix credo
 4. Update tests and documentation
 5. Run `mix test` to verify changes
 
+### Documentation
+
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
+and published on [HexDocs](https://hexdocs.pm).
+
+Once published, the docs can be found at <https://hexdocs.pm/memorable_ids>.
+
 ## License
 
 This project is open-sourced software licensed under the [MIT license](https://choosealicense.com/licenses/mit/).
@@ -364,6 +373,4 @@ See the [license file](./LICENSE) for more information.
 
 ---
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/memorable_ids>.
+<sub>🤫 Psst! If you like my work you can support me via [GitHub sponsors](https://github.com/sponsors/riipandi).</sub>
