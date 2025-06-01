@@ -5,6 +5,7 @@ defmodule MemorableIds.MixProject do
     [
       app: :memorable_ids,
       version: "0.1.0",
+      description: "A flexible library for generating human-readable, memorable identifiers",
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -15,6 +16,7 @@ defmodule MemorableIds.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
+      package: package(),
       # Docs
       name: "Memorable IDs",
       source_url: "https://github.com/riipandi/memorable-ids-ex",
@@ -35,6 +37,15 @@ defmodule MemorableIds.MixProject do
     [
       {:excoveralls, "~> 0.18", only: [:test, :dev]},
       {:ex_doc, "~> 0.38", only: :dev, runtime: false, warn_if_outdated: true}
+    ]
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README.md", "LICENSE"],
+      maintainers: ["Aris Ripandi"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/riipandi/memorable-ids-ex"}
     ]
   end
 
