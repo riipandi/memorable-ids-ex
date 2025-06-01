@@ -191,12 +191,6 @@ defmodule MemorableIds.SuffixGeneratorsTest do
 
     test "should be based on current time" do
       suffix_generators = MemorableIds.suffix_generators()
-      current_time = System.system_time(:millisecond)
-
-      expected_suffix =
-        current_time
-        |> Integer.to_string()
-        |> String.slice(-4..-1)
 
       # Generate suffix within small time window
       actual_suffix = suffix_generators.timestamp.()

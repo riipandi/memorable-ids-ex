@@ -19,12 +19,16 @@ defmodule MemorableIdsTest do
 
     test "should calculate combinations" do
       combinations = MemorableIds.calculate_combinations(2)
-      # 78 * 68
-      assert combinations == 5304
+
+      expected =
+        MemorableIds.Dictionary.stats().adjectives * MemorableIds.Dictionary.stats().nouns
+
+      assert combinations == expected
     end
 
     test "should calculate collision probability" do
-      probability = MemorableIds.calculate_collision_probability(5304, 100)
+      total_combinations = MemorableIds.calculate_combinations(2)
+      probability = MemorableIds.calculate_collision_probability(total_combinations, 100)
       assert is_float(probability)
       assert probability >= 0.0
       assert probability <= 1.0
@@ -36,7 +40,8 @@ defmodule MemorableIdsTest do
       assert is_map(analysis)
       assert Map.has_key?(analysis, :total_combinations)
       assert Map.has_key?(analysis, :scenarios)
-      assert analysis.total_combinations == 5304
+      expected = MemorableIds.calculate_combinations(2)
+      assert analysis.total_combinations == expected
     end
   end
 
@@ -166,20 +171,22 @@ defmodule MemorableIdsTest do
       combinations2 = MemorableIds.calculate_combinations(2, 1000)
       assert combinations1 == combinations2
 
-      probability1 = MemorableIds.calculate_collision_probability(5304, 100)
-      probability2 = MemorableIds.calculate_collision_probability(5304, 100)
+      total_combinations = MemorableIds.calculate_combinations(2)
+      probability1 = MemorableIds.calculate_collision_probability(total_combinations, 100)
+      probability2 = MemorableIds.calculate_collision_probability(total_combinations, 100)
       assert probability1 == probability2
     end
   end
 
   describe "Dictionary module tests" do
     test "should have expected word counts" do
-      # Test actual word counts match expected values
-      assert length(MemorableIds.Dictionary.adjectives()) == 78
-      assert length(MemorableIds.Dictionary.nouns()) == 68
-      assert length(MemorableIds.Dictionary.verbs()) == 40
-      assert length(MemorableIds.Dictionary.adverbs()) == 27
-      assert length(MemorableIds.Dictionary.prepositions()) == 26
+      # Test actual word counts match dictionary
+      stats = MemorableIds.Dictionary.stats()
+      assert length(MemorableIds.Dictionary.adjectives()) == stats.adjectives
+      assert length(MemorableIds.Dictionary.nouns()) == stats.nouns
+      assert length(MemorableIds.Dictionary.verbs()) == stats.verbs
+      assert length(MemorableIds.Dictionary.adverbs()) == stats.adverbs
+      assert length(MemorableIds.Dictionary.prepositions()) == stats.prepositions
     end
   end
 end

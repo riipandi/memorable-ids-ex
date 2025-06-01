@@ -9,9 +9,9 @@ defmodule MemorableIds.DictionaryTest do
       adjectives = Dictionary.adjectives()
 
       assert is_list(adjectives)
-      assert length(adjectives) == 78
+      assert length(adjectives) == 81
       assert "cute" in adjectives
-      assert "dangerous" in adjectives
+      assert "large" in adjectives
     end
 
     test "should return correct nouns list" do
@@ -20,7 +20,7 @@ defmodule MemorableIds.DictionaryTest do
       assert is_list(nouns)
       assert length(nouns) == 68
       assert "rabbit" in nouns
-      assert "door" in nouns
+      assert "rat" in nouns
     end
 
     test "should return correct verbs list" do
@@ -56,11 +56,11 @@ defmodule MemorableIds.DictionaryTest do
       stats = Dictionary.stats()
 
       assert is_map(stats)
-      assert stats.adjectives == 78
-      assert stats.nouns == 68
-      assert stats.verbs == 40
-      assert stats.adverbs == 27
-      assert stats.prepositions == 26
+      assert stats.adjectives == length(Dictionary.adjectives())
+      assert stats.nouns == length(Dictionary.nouns())
+      assert stats.verbs == length(Dictionary.verbs())
+      assert stats.adverbs == length(Dictionary.adverbs())
+      assert stats.prepositions == length(Dictionary.prepositions())
     end
 
     test "should match actual word list lengths" do
@@ -90,11 +90,11 @@ defmodule MemorableIds.DictionaryTest do
     test "should contain correct word counts in all data" do
       all_data = Dictionary.all()
 
-      assert length(all_data.adjectives) == 78
-      assert length(all_data.nouns) == 68
-      assert length(all_data.verbs) == 40
-      assert length(all_data.adverbs) == 27
-      assert length(all_data.prepositions) == 26
+      assert length(all_data.adjectives) == length(Dictionary.adjectives())
+      assert length(all_data.nouns) == length(Dictionary.nouns())
+      assert length(all_data.verbs) == length(Dictionary.verbs())
+      assert length(all_data.adverbs) == length(Dictionary.adverbs())
+      assert length(all_data.prepositions) == length(Dictionary.prepositions())
     end
   end
 

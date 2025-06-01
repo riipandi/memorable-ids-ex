@@ -4,9 +4,6 @@ defmodule MemorableIds.Dictionary do
 
   Contains collections of English words categorized by part of speech.
   Used to generate human-readable, memorable identifiers.
-
-  @author Aris Ripandi
-  @license MIT
   """
 
   @doc """
